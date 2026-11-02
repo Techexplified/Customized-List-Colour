@@ -58,7 +58,7 @@ TrelloPowerUp.initialize({
               listNames = boardLists.map((l) => l.name).filter(Boolean);
             }
           } catch (err) {
-            console.warn("Could not retrieve lists in board-buttons callback:", err);
+            // Silently fall back if lists query is restricted in this context
           }
 
           const query =
@@ -101,7 +101,7 @@ TrelloPowerUp.initialize({
               listNames = boardLists.map((l) => l.name).filter(Boolean);
             }
           } catch (err) {
-            console.warn("Could not retrieve lists in list-actions callback:", err);
+            // Silently fall back if lists query is restricted in this context
           }
 
           const query =

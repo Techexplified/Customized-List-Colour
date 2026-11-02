@@ -565,7 +565,7 @@ export async function applyRulesToBoardCards(t, rules = [], options = {}) {
             size: item.size,
           });
         } catch (e) {
-          console.warn(`Failed to update card cover for "${item.card.name}":`, e);
+          // Gracefully continue so a single problematic card doesn't halt the batch
         }
         completed++;
         const pct = 30 + Math.round((completed / totalUpdates) * 65);

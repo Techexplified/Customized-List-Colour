@@ -135,7 +135,7 @@ export default function RulesModal({ t, onClose }) {
             }
           }
         } catch (e) {
-          console.warn("Could not query t.lists in iframe:", e);
+          // Gracefully continue to REST API and query parameters
         }
       }
 

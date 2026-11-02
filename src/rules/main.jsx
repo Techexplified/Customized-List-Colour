@@ -22,7 +22,9 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error("RulesModal render error:", error, errorInfo);
+    if (typeof process !== "undefined" && process.env?.NODE_ENV !== "production") {
+      console.error("RulesModal render error:", error, errorInfo);
+    }
   }
 
   render() {
