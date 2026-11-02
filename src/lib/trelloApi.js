@@ -265,8 +265,8 @@ export function detectCardPriorities(card) {
     priorities.add("Low");
   }
 
-  // 3. Due dates
-  if (card.due && !card.dueComplete) {
+  // 3. Due dates (fallback inference only if no explicit priority was found)
+  if (priorities.size === 0 && card.due && !card.dueComplete) {
     const dueTime = new Date(card.due).getTime();
     const now = Date.now();
     if (dueTime < now) {

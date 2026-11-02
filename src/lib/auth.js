@@ -6,7 +6,8 @@
 // by any other board member.
 
 export const APP_KEY =
-  import.meta.env.VITE_TRELLO_APP_KEY || "36aaae2ff57649840580d01a41f456e5";
+  (typeof import.meta !== "undefined" && import.meta.env?.VITE_TRELLO_APP_KEY) ||
+  "36aaae2ff57649840580d01a41f456e5";
 export const APP_NAME = "Conditional List Colour";
 
 // Shared message tag validated by authorized.js and AuthPopup.jsx

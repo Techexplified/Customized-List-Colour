@@ -1,1 +1,0 @@
-import"./auth-CL0wwZkm.js";import{c as e,j as o,R as t}from"./client-Ds7D3P6J.js";import{S as r}from"./SettingsPopup-BmrnxooS.js";import"./trelloApi-DnYbCRp6.js";import"./icons-DJdbxnUT.js";const i=typeof window<"u"&&window.TrelloPowerUp?window.TrelloPowerUp.iframe():null;e.createRoot(document.getElementById("root")).render(o.jsx(t.StrictMode,{children:o.jsx(r,{t:i})}));
