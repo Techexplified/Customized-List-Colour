@@ -71,18 +71,33 @@ export default function SettingsPopup({ t }) {
     }
   }
 
-  function handleOpenRulesManager() {
+  async function handleOpenRulesManager() {
+    let listNames = [];
+    try {
+      if (t && typeof t.lists === "function") {
+        const boardLists = await t.lists("all");
+        if (Array.isArray(boardLists) && boardLists.length > 0) {
+          listNames = boardLists.map((l) => l.name).filter(Boolean);
+        }
+      }
+    } catch (e) {}
+
+    const query =
+      listNames.length > 0
+        ? `?lists=${encodeURIComponent(JSON.stringify(listNames))}`
+        : "";
+
     if (t && typeof t.modal === "function") {
       t.modal({
-        url: "./rules.html",
-        accentColor: "#0c66e4",
+        url: `./rules.html${query}`,
+        accentColor: "#22272b",
         fullscreen: false,
-        height: 520,
-        width: 700,
-        title: "Conditional List Colors - Rules & Themes",
+        height: 640,
+        width: 1020,
+        title: "Conditional List Color Rule Studio",
       });
     } else {
-      window.location.href = "./rules.html";
+      window.location.href = `./rules.html${query}`;
     }
     if (t && typeof t.closePopup === "function") {
       t.closePopup();
