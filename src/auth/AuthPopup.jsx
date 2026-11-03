@@ -19,10 +19,10 @@ import {
 import "./auth.css";
 
 const PREVIEW_THEMES = [
-  { id: "flow", name: "Flow", color: "#6366f1" },
-  { id: "done", name: "Done", color: "#10b981" },
-  { id: "alert", name: "Alert", color: "#ef4444" },
-  { id: "limit", name: "WIP Limit", color: "#f59e0b" },
+  { id: "overdue", name: "Overdue", color: "#e34935" },
+  { id: "urgent", name: "Urgent", color: "#8270db" },
+  { id: "checklist", name: "Checklist", color: "#d97008" },
+  { id: "completed", name: "Completed", color: "#1f845a" },
 ];
 
 export default function AuthPopup({ t }) {
@@ -194,7 +194,7 @@ export default function AuthPopup({ t }) {
         </div>
         <h3 className="auth-title">Connected to {APP_NAME}</h3>
         <p className="auth-subtitle" style={{ marginBottom: "20px" }}>
-          Your Trello board is now ready for dynamic list tints, automated WIP limit alerts, and custom conditions.
+          Your Trello board is now ready to apply conditional top banners based on due dates, checklists, and priorities.
         </p>
 
         <button
@@ -240,7 +240,7 @@ export default function AuthPopup({ t }) {
 
       {/* Hero Subtitle */}
       <p className="auth-subtitle">
-        Automatically tint lists and highlight overdue work with conditional rules.
+        Automatically highlight overdue cards, checklists, and priority work with top banner colors.
       </p>
 
       {/* Bespoke Interactive Chromatic Engine Visual */}
@@ -357,41 +357,25 @@ export default function AuthPopup({ t }) {
       {showDetails && (
         <div className="auth-feature-drawer">
           <div className="auth-feature-row">
-            <span>🏷️</span>
+            <span>📅</span>
             <span>
-              <strong>List Name:</strong> Highlight when title contains "Done",
-              "Review", "Blocked".
+              <strong>Due Dates:</strong> Flag overdue cards and upcoming deadlines with colored banners.
             </span>
           </div>
           <div className="auth-feature-row">
-            <span>📊</span>
+            <span>☑️</span>
             <span>
-              <strong>WIP Limits:</strong> Color-code lists exceeding maximum card
-              limits.
+              <strong>Checklists:</strong> Highlight cards with incomplete tasks or celebrate 100% completion.
             </span>
           </div>
           <div className="auth-feature-row">
-            <span>⏰</span>
+            <span>⚡</span>
             <span>
-              <strong>Overdue Check:</strong> Amber/Red warning on lists with past-due
-              cards.
+              <strong>Priority:</strong> Automatically style Urgent, High, Medium, or Low priority tasks.
             </span>
           </div>
         </div>
       )}
-
-      {/* Local Simulation for Testing */}
-      <div className="auth-dev-ribbon">
-        <span>Dev Preview:</span>
-        <button
-          type="button"
-          onClick={handleSimulateSuccess}
-          className="auth-dev-tag-btn"
-          title="Simulate instant OAuth success for testing"
-        >
-          Simulate Auth
-        </button>
-      </div>
     </div>
   );
 }
